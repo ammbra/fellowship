@@ -1,20 +1,28 @@
 package org.example.cloud.nativ;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Friend extends PanacheEntity {
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class Friend extends PanacheEntityBase{
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     private String name;
 
-    private String message;
+    private String content;
 
     private String language;
 
     private String country;
+
+    private boolean persistent;
 
     public String getName() {
         return name;
@@ -24,12 +32,12 @@ public class Friend extends PanacheEntity {
         this.name = name;
     }
 
-    public String getMessage() {
-        return message;
+    public String getContent() {
+        return content;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setContent(String message) {
+        this.content = message;
     }
 
     public String getLanguage() {
@@ -46,5 +54,25 @@ public class Friend extends PanacheEntity {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public boolean isPersistent() {
+        return persistent;
+    }
+
+    public void setPersistent(boolean reciprocal) {
+        this.persistent = reciprocal;
+    }
+
+    @Override
+    public String toString() {
+        return "Friend{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", content='" + content + '\'' +
+                ", language='" + language + '\'' +
+                ", country='" + country + '\'' +
+                ", persistent=" + persistent +
+                '}';
     }
 }

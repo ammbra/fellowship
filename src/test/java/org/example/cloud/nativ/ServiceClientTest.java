@@ -24,11 +24,35 @@ public class ServiceClientTest {
 
     private String pathToCustomConfig;
 
+    private String flavoredInput = """
+            apiVersion: v1
+            kind: Service
+            metadata:
+              annotations:
+                app.quarkus.io/build-timestamp: 2022-02-14 - 13:56:17 +0000
+              labels:
+                app.kubernetes.io/name: fellowship-not-working
+                app.kubernetes.io/version: 1.0.0-SNAPSHOT
+            spec:
+              ports:
+                - name: http
+                  port: 80
+                  targetPort: 8080
+              selector:
+                app.kubernetes.io/name: fellowship-not-working
+                app.kubernetes.io/version: 1.0.0-SNAPSHOT
+              type: now
+            """;
+
     @Test
     public void testServiceFile() throws URISyntaxException, FileNotFoundException {
-        pathToCustomConfig = "./src/main/k8s/service.yml";
+        pathToCustomConfig = "./src/main/kubernetes/service.yml";
         Service test = mockKubernetes.getClient().services().load(pathToCustomConfig).get();
         assertThrows(KubernetesClientException.class, () ->  mockKubernetes.getClient().services().create(test)) ;
     }
 
+    @Test
+    public void testCustomYAMLInput() throws URISyntaxException, FileNotFoundException {
+        assertThrows(KubernetesClientException.class, () ->  mockKubernetes.getClient().services().load(flavoredInput).dryRun()) ;
+    }
 }

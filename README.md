@@ -69,7 +69,7 @@ Obtain the path to the deployed service:
 kubectl get service fellowship -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 ````
 
-Export URL to the servicce using:
+Export URL to the service using:
 
 ````
 export URL=http://$( kubectl get service fellowship -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')

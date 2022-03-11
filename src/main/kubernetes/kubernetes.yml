@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.quarkus.io/commit-id: 53c6aaebe5bb3cb4f3bc42570e0d5c975d7f3867
+    app.quarkus.io/build-timestamp: 2022-03-11 - 13:45:35 +0000
+  labels:
+    app.kubernetes.io/name: fellowship-extra
+    app.kubernetes.io/version: 1.0.3-SNAPSHOT
+  name:  fellowship-extra
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
