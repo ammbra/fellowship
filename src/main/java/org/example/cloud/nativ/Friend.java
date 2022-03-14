@@ -22,7 +22,7 @@ public class Friend extends PanacheEntityBase{
 
     private String country;
 
-    private boolean persistent;
+    private boolean romanic;
 
     public String getName() {
         return name;
@@ -56,12 +56,12 @@ public class Friend extends PanacheEntityBase{
         this.country = country;
     }
 
-    public boolean isPersistent() {
-        return persistent;
+    public boolean isRomanic() {
+        return romanic;
     }
 
-    public void setPersistent(boolean reciprocal) {
-        this.persistent = reciprocal;
+    public void setRomanic(boolean reciprocal) {
+        this.romanic = reciprocal;
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Friend extends PanacheEntityBase{
                 ", content='" + content + '\'' +
                 ", language='" + language + '\'' +
                 ", country='" + country + '\'' +
-                ", persistent=" + persistent +
+                ", romanic=" + romanic +
                 '}';
     }
 }

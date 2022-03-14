@@ -15,7 +15,7 @@ public class FellowshipFunction {
     String greeting;
 
     @Inject
-    FriendRepository service;
+    FriendService service;
 
     @Funq
     public String greet() {
