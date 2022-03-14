@@ -16,7 +16,7 @@ public class FellowshipResource {
     String greeting;
 
     @Inject
-    FellowshipReactiveService service;
+    FriendRepository service;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
