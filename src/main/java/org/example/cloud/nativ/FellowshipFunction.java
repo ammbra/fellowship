@@ -19,18 +19,7 @@ public class FellowshipFunction {
 
     @Funq
     public String greet() {
-        return greeting;
-    }
-
-    @Funq
-    public Friend make(Friend content) {
-        Friend.persist(content);
-        return content;
-    }
-
-    @Funq
-    public List<Friend> findAll() {
-        return Friend.findAll().list();
+       return greeting;
     }
 
 
@@ -39,4 +28,16 @@ public class FellowshipFunction {
         return service.update(content, language);
     }
 
+
+    @Funq
+    public Friend make(Friend content) {
+        Friend.persist(content);
+        return content;
+    }
+
+
+    @Funq
+    public List<Friend> findAll() {
+        return Friend.findAll().list();
+    }
 }
