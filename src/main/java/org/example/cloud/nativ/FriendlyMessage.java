@@ -5,10 +5,12 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="friendly_message")
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class Friend extends PanacheEntityBase{
+public class FriendlyMessage extends PanacheEntityBase {
 
     @Id
     @GeneratedValue
