@@ -3,7 +3,7 @@
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
-
+This application is using Dev Services, so please make sure that you have a Docker daemon running.
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
@@ -47,14 +47,25 @@ You can then execute your native executable with: `./target/fellowship-1.0.0-SNA
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
 
+
+## Related Guides
+
+- RESTEasy Reactive ([guide](https://quarkus.io/guides/resteasy-reactive)): Reactive implementation of JAX-RS with additional features. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
+- SmallRye Health ([guide](https://quarkus.io/guides/microprofile-health)): Monitor service health
+
 ## Provided Code
 
-### RESTEasy JAX-RS
+### RESTEasy Reactive
 
-Easily start your RESTful Web Services
+Easily start your Reactive RESTful Web Services
 
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
 
+### SmallRye Health
+
+Monitor your application's health using SmallRye Health
+
+[Related guide section...](https://quarkus.io/guides/smallrye-health)
 
 ## Deploy to Kubernetes
 
