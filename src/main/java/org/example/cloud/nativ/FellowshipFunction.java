@@ -5,7 +5,7 @@ import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -14,8 +14,6 @@ public class FellowshipFunction {
     @ConfigProperty(name = "custom.greeting")
     String greeting;
 
-    @Inject
-    FriendService service;
 
     @Funq
     public String greet() {
@@ -24,20 +22,22 @@ public class FellowshipFunction {
 
 
     @Funq
+    @Transactional
     public Uni<Integer> update(String content, String language) {
-        return service.update(content, language);
+        return Uni.createFrom().item(content).onItem()
+                .transform(n -> FriendlyMessage.update("content=?1 where language=?2", content, language));
     }
 
 
     @Funq
-    public Friend make(Friend content) {
-        Friend.persist(content);
+    public FriendlyMessage make(FriendlyMessage content) {
+        FriendlyMessage.persist(content);
         return content;
     }
 
 
     @Funq
-    public List<Friend> findAll() {
-        return Friend.findAll().list();
+    public List<FriendlyMessage> findAll() {
+        return FriendlyMessage.findAll().list();
     }
 }
