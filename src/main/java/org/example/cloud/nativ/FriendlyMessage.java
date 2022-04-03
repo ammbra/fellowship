@@ -1,20 +1,13 @@
 package org.example.cloud.nativ;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="friendly_message")
-@JsonIgnoreProperties(ignoreUnknown=true)
-public class FriendlyMessage extends PanacheEntityBase {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class FriendlyMessage extends PanacheEntity {
 
     private String name;
 
