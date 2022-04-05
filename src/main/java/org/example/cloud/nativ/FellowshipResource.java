@@ -26,7 +26,7 @@ public class FellowshipResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Uni<Integer> update(@RestPath String content, @RestPath  String language) {
-        return Uni.createFrom().item(content).onItem()
+        return Uni.createFrom().item(language).onItem()
                 .transform(n -> FriendlyMessage.update("content=?1 where language=?2", content, language));
     }
 
