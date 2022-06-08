@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @WithKubernetesTestServer
 @QuarkusTest
-@DisabledOnIntegrationTest
+@DisabledOnIntegrationTest(forArtifactTypes = DisabledOnIntegrationTest.ArtifactType.NATIVE_BINARY)
 public class PodDisruptionBudgetTest {
 
     @KubernetesTestServer
