@@ -4,6 +4,7 @@ package org.example.cloud.nativ;
 import io.fabric8.kubernetes.api.model.policy.v1.PodDisruptionBudget;
 import io.fabric8.kubernetes.client.KubernetesClientException;
 import io.fabric8.kubernetes.client.server.mock.KubernetesServer;
+import io.quarkus.test.junit.DisabledOnIntegrationTest;
 import io.quarkus.test.junit.DisabledOnNativeImage;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.kubernetes.client.KubernetesTestServer;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @WithKubernetesTestServer
 @QuarkusTest
-@DisabledOnNativeImage
+@DisabledOnIntegrationTest
 public class PodDisruptionBudgetTest {
 
     @KubernetesTestServer
